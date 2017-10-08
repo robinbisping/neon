@@ -1,0 +1,22 @@
+{
+  "name": "neon",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robinbisping/neon.git"
+  },
+  "author": "Robin Bisping",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robinbisping/neon/issues"
+  },
+  "homepage": "https://github.com/robinbisping/neon#readme",
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
