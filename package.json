@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/robinbisping/neon#readme",
   "dependencies": {
-    "express": "^4.16.1"
+    "express": "^4.16.1",
+    "mongoose": "^4.12.1"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
