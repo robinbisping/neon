@@ -97,6 +97,4 @@ var PhoneSchema = Schema({
 	},
 });
 
-
-
 module.exports = mongoose.model('Friend', FriendSchema);
