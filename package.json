@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/robinbisping/neon#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "express": "^4.16.1",
     "mongoose": "^4.12.1"
   },
