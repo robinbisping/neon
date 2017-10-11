@@ -1,5 +1,5 @@
 module.exports = {
-    mongodb: {
+    mongo: {
         url: 'mongodb://localhost/',
         name: 'neon',
         user: 'neon',
