@@ -26,7 +26,7 @@ const UserSchema = Schema({
 		type: Date,
 		required: true,
 		default: Date.now,
-	}
+	},
 	lastLogin: {
 		type: Date,
 		required: true,
@@ -48,13 +48,13 @@ UserSchema.pre('save', function(next) {
 	});
 });
 
-UserSchema.methods.comparePassword = function(newPassword, callback) {
+UserSchema.methods.verifyPassword = function(new_password, callback) {
 	// Compare new password with old one
-	bcrypt.compare(newPassword, this.password, function(err, isMatch) {
+	bcrypt.compare(new_password, this.password, function(err, is_match) {
 		if (err) {
 			return callback(err);
 		}
-		callback(null, isMatch);
+		callback(null, is_match);
 	});
 };
 
