@@ -14,10 +14,15 @@ mongoose.connect(config.db.mongo.url + config.db.mongo.name, {
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// Use passport for authentication
+const passport = require('passport');
+const authController = require('./controllers/auth');
+app.use(passport.initialize());
+
 // Routes
 const web = require('./routes/web');
 const api = require('./routes/api');
 app.use('/', web);
-app.use('/api', api);
+app.use('/api', authController.is_authenticated, api);
 
 module.exports = app;
