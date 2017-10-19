@@ -52,7 +52,7 @@ UserSchema.methods.comparePassword = function(newPassword, callback) {
 	// Compare new password with old one
 	bcrypt.compare(newPassword, this.password, function(error, isMatch) {
 		if (error) {
-			return callback(err);
+			return callback(error);
 		}
 		callback(null, isMatch);
 	});
