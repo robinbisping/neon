@@ -19,6 +19,10 @@ var FriendSchema = Schema({
 	birthday: {
 		type: Date,
 	},
+	group: {
+		type: Schema.ObjectId,
+		ref: 'Group',
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User',
