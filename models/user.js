@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var UserSchema = Schema({
+const UserSchema = Schema({
 	email: {
 		type: String,
 		required: true,
@@ -39,9 +39,9 @@ UserSchema.pre('save', function(next) {
 		return next();
 	}
 	// Hash password
-	bcrypt.hash(this.password, 10, function(error, hash) {
-		if (error) {
-			return next(error);
+	bcrypt.hash(this.password, 10, function(err, hash) {
+		if (err) {
+			return next(err);
 		}
 		this.password = hash;
 		next();
@@ -50,9 +50,9 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods.comparePassword = function(newPassword, callback) {
 	// Compare new password with old one
-	bcrypt.compare(newPassword, this.password, function(error, isMatch) {
-		if (error) {
-			return callback(error);
+	bcrypt.compare(newPassword, this.password, function(err, isMatch) {
+		if (err) {
+			return callback(err);
 		}
 		callback(null, isMatch);
 	});

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var FriendSchema = Schema({
+const FriendSchema = Schema({
 	firstname: {
 		type: String,
 		required: true,
@@ -35,7 +35,7 @@ FriendSchema.virtual('name').get(function () {
 });
 
 // Sub schemas
-var EmailSchema = Schema({
+const EmailSchema = Schema({
 	address: {
 		type: String,
 		maxlength: 100,
@@ -56,7 +56,7 @@ var EmailSchema = Schema({
 	},
 });
 
-var PostalAddressSchema = Schema({
+const PostalAddressSchema = Schema({
 	street: [{
 		type: String,
 		maxlength: 100,
@@ -80,7 +80,7 @@ var PostalAddressSchema = Schema({
 	},
 });
 
-var PhoneSchema = Schema({
+const PhoneSchema = Schema({
 	number: {
 		type: String,
 		maxlength: 20,
