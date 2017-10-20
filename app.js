@@ -11,6 +11,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Hide info from HTTP header
+app.set('etag', false)
+app.set('x-powered-by', false)
+
 // Connect to database
 const mongoose = require('mongoose')
 mongoose.connect(config.db.mongo.url + config.db.mongo.name, {
