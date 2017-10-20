@@ -11,7 +11,7 @@ router.route('/user')
 	.post(user_controller.create)
 router.route('/user/:id')
 	.get(user_controller.get)
-	.delete(user_controller.remove)
+	.delete(user_controller.delete)
 router.route('/users')
 	.get(user_controller.list)
 

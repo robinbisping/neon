@@ -34,13 +34,13 @@ module.exports = {
 		})
 	},
 
-	remove: function(req, res, next) {
+	delete: function(req, res, next) {
 		var id = req.params.id
 		User.findByIdAndRemove(id, function(err){
 			if(err)
 				return next(err)
 			res.json({
-				message: 'User removed.',
+				message: 'User deleted.',
 			})
 		})
 	},
