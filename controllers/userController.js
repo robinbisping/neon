@@ -12,9 +12,27 @@ module.exports = {
 
 	get: function(req, res, next) {
 		var id = req.params.id
+		if(!id.match(/^[0-9a-fA-F]{24}$/)) {
+			return res.status(404).json({
+				error: {
+					status: 404,
+					data: req.params,
+					message: 'User does not exist.',
+				},
+			})
+		}
 		User.findById(id, function(err, user){
 			if(err)
 				return next(err)
+			if(!user) {
+				return res.status(404).json({
+					error: {
+						status: 404,
+						data: req.params,
+						message: 'User does not exist.',
+					},
+				})
+			}
 			res.json(user)
 		})
 	},
