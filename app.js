@@ -1,8 +1,15 @@
 const express = require('express')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
+
 const app = express()
 
 // Load configuration
 const config = require('./config/config')
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to database
 const mongoose = require('mongoose')
@@ -23,7 +30,7 @@ app.use(passport.initialize())
 const web = require('./routes/web')
 const api = require('./routes/api')
 app.use('/', web)
-app.use('/api', authController.is_authenticated, api)
+app.use('/api', api)
 
 // Error handler
 app.use(function(err, req, res, next) {
