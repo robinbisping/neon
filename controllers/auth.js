@@ -1,23 +1,27 @@
-const passport = require('passport');
-const BasicStrategy = require('passport-http').BasicStrategy;
-const User = require('../models/user');
+const passport = require('passport')
+const BasicStrategy = require('passport-http').BasicStrategy
+const User = require('../models/user')
 
 passport.use(new BasicStrategy(
-	function(email, password, callback) {
+	function(email, password, next) {
 		User.findOne({ email: email }, function (err, user) {
-			if (err) { return callback(err); }
+			if (err)
+				return next(err)
 			// User does not exist
-			if (!user) { return callback(null, false); }
+			if (!user)
+				return next(null, false)
 			// Verify password
 			User.verifyPassword(password, function(err, is_match) {
-				if(err) { return callback(err); }
+				if(err)
+					return next(err)
 				// Wrong password
-				if(!is_match) { return callback(null, false); }
+				if(!is_match)
+					return next(null, false)
 				// Username and password correct
-				return callback(null, user);
-			});
-		});
+				return next(null, user)
+			})
+		})
 	}
-));
+))
 
-exports.is_authenticated = passport.authenticate('basic', { session : false });
+exports.is_authenticated = passport.authenticate('basic', { session : false })

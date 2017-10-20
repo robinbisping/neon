@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const FriendSchema = Schema({
 	firstname: {
@@ -28,11 +28,11 @@ const FriendSchema = Schema({
 		ref: 'User',
 		required: true,
 	},
-});
+})
 
 FriendSchema.virtual('name').get(function () {
-	return this.firstname + ' ' + this.lastname;
-});
+	return this.firstname + ' ' + this.lastname
+})
 
 // Sub schemas
 const EmailSchema = Schema({
@@ -41,7 +41,7 @@ const EmailSchema = Schema({
 		maxlength: 100,
 		validate: {
 			validator: function(v) {
-				return /^\S+@\S+[\.][0-9a-z]+$/.test(v);
+				return /^\S+@\S+[\.][0-9a-z]+$/.test(v)
 			},
 			message: '{VALUE} is not a valid email address.',
 		},
@@ -54,7 +54,7 @@ const EmailSchema = Schema({
 			'parental',
 		],
 	},
-});
+})
 
 const PostalAddressSchema = Schema({
 	street: [{
@@ -78,7 +78,7 @@ const PostalAddressSchema = Schema({
 			'parental',
 		],
 	},
-});
+})
 
 const PhoneSchema = Schema({
 	number: {
@@ -86,7 +86,7 @@ const PhoneSchema = Schema({
 		maxlength: 20,
 		validate: {
 			validator: function(v) {
-				return /^[+]\d+$/.test(v);
+				return /^[+]\d+$/.test(v)
 			},
 			message: '{VALUE} is not a valid phone number.',
 		},
@@ -99,6 +99,6 @@ const PhoneSchema = Schema({
 			'parental',
 		],
 	},
-});
+})
 
-module.exports = mongoose.model('Friend', FriendSchema);
+module.exports = mongoose.model('Friend', FriendSchema)

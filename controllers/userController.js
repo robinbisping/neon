@@ -16,7 +16,7 @@ module.exports = {
 			if(err)
 				return next(err)
 			res.json(user)
-		});
+		})
 	},
 
 	create: function(req, res, next) {

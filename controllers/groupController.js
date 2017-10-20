@@ -1,1 +1,1 @@
-const Group = require('../models/group');
+const Group = require('../models/group')

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 
 const GroupSchema = Schema({
 	name: {
@@ -17,6 +17,6 @@ const GroupSchema = Schema({
 		ref: 'User',
 		required: true,
 	},
-});
+})
 
-module.exports = mongoose.model('Group', GroupSchema);
+module.exports = mongoose.model('Group', GroupSchema)
