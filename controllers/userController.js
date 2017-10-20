@@ -23,6 +23,7 @@ module.exports = {
 		var user = new User({
 			email: req.body.email,
 			password: req.body.password,
+			registered: Date.now(),
 		})
 		user.save(function(err){
 			if(err)

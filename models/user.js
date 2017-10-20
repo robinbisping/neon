@@ -22,14 +22,12 @@ const UserSchema = Schema({
 		type: String,
 		required: true,
 	},
-	created: {
+	registered: {
 		type: Date,
 		required: true,
-		default: Date.now,
 	},
-	lastLogin: {
+	last_login: {
 		type: Date,
-		required: true,
 	},
 })
 
