@@ -1,41 +1,9 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-const FriendSchema = Schema({
-	firstname: {
-		type: String,
-		required: true,
-		maxlength: 50,
-	},
-	lastname: {
-		type: String,
-		required: true,
-		maxlength: 50,
-	},
-	email: [EmailSchema],
-	postalAddress: [PostalAddressSchema],
-	phone: [PhoneNumberSchema],
-	birthday: {
-		type: Date,
-	},
-	group: [{
-		type: Schema.ObjectId,
-		ref: 'Group',
-	}],
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User',
-		required: true,
-	},
-})
-
-FriendSchema.virtual('name').get(function () {
-	return this.firstname + ' ' + this.lastname
-})
+var Schema = mongoose.Schema
 
 // Sub schemas
-const EmailSchema = Schema({
+var EmailSchema = Schema({
 	address: {
 		type: String,
 		maxlength: 100,
@@ -56,7 +24,7 @@ const EmailSchema = Schema({
 	},
 })
 
-const PostalAddressSchema = Schema({
+var PostalAddressSchema = Schema({
 	street: [{
 		type: String,
 		maxlength: 100,
@@ -80,7 +48,7 @@ const PostalAddressSchema = Schema({
 	},
 })
 
-const PhoneSchema = Schema({
+var PhoneSchema = Schema({
 	number: {
 		type: String,
 		maxlength: 20,
@@ -99,6 +67,38 @@ const PhoneSchema = Schema({
 			'parental',
 		],
 	},
+})
+
+var FriendSchema = Schema({
+	firstname: {
+		type: String,
+		required: true,
+		maxlength: 50,
+	},
+	lastname: {
+		type: String,
+		required: true,
+		maxlength: 50,
+	},
+	email: [EmailSchema],
+	postalAddress: [PostalAddressSchema],
+	phone: [PhoneSchema],
+	birthday: {
+		type: Date,
+	},
+	group: [{
+		type: Schema.ObjectId,
+		ref: 'Group',
+	}],
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User',
+		required: true,
+	},
+})
+
+FriendSchema.virtual('name').get(function () {
+	return this.firstname + ' ' + this.lastname
 })
 
 module.exports = mongoose.model('Friend', FriendSchema)
