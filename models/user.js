@@ -33,14 +33,16 @@ const UserSchema = Schema({
 })
 
 UserSchema.pre('save', function(next) {
+	let user = this
 	// Only continue if password was modified
-	if (!this.isModified('password'))
+	if (!user.isModified('password')) {
 		return next()
+	}
 	// Hash password
-	bcrypt.hash(this.password, 10, function(err, hash) {
+	bcrypt.hash(user.password, 10, function(err, hash) {
 		if (err)
 			return next(err)
-		this.password = hash
+		user.password = hash
 		next()
 	})
 })
