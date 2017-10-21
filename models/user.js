@@ -27,7 +27,7 @@ const UserSchema = Schema({
 		type: Date,
 		required: true,
 	},
-	last_login: {
+	last_request: {
 		type: Date,
 	},
 })
