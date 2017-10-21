@@ -4,14 +4,6 @@ const User = require('../models/user')
 
 module.exports = {
 
-	list: function(req, res, next) {
-		User.find(function(err, users) {
-			if(err)
-				return next(err)
-			res.json(users);
-		})
-	},
-
 	read: function(req, res, next) {
 		var id = req.params.id
 		if(!id.match(/^[0-9a-fA-F]{24}$/))
@@ -67,6 +59,14 @@ module.exports = {
 			if(err)
 				return next(err)
 			res.status(204)
+		})
+	},
+
+	list: function(req, res, next) {
+		User.find(function(err, users) {
+			if(err)
+				return next(err)
+			res.json(users);
 		})
 	},
 
