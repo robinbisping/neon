@@ -26,16 +26,14 @@ module.exports = {
 	},
 
 	create: function(req, res, next) {
-		var user = new User({
+		let user = new User({
 			email: req.body.email,
 			password: req.body.password,
 			registered: Date.now(),
 		})
-		user.save(function(err) {
+		user.save(function(err, user) {
 			if(err)
 				return next(err)
-			user = user.toObject()
-			delete user.password
 			res.status(201).json({
 				data: user,
 			})
@@ -53,11 +51,9 @@ module.exports = {
 				return next(boom.notFound('User not found.'))
 			user.email = req.body.email || user.email
 			user.password = req.body.password || user.password
-			user.save(function(err) {
+			user.save(function(err, user) {
 				if(err)
 					return next(err)
-				user = user.toObject()
-				delete user.password
 				res.json({
 					data: user,
 				})
