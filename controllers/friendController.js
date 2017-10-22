@@ -1,1 +1,1 @@
-const Friend = require('../models/friend')
+const Friend = require('../models/friend');
