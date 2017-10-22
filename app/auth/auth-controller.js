@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const config = require('../config');
-const User = require('./user-model');
+const User = require('../user/user-model');
 
 exports.login = function (req, res, next) {
 	const token = jwt.sign({
