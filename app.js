@@ -31,10 +31,10 @@ const authController = require('./controllers/auth');
 app.use(passport.initialize());
 
 // Routes
-const web = require('./routes/web');
-const api = require('./routes/api');
-app.use('/', web);
-app.use('/api', api);
+const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
+app.use('/user', passport.authenticate('jwt', { session: false }), userRoutes);
+app.use('/auth', authRoutes);
 
 // Error handler
 app.use(function (err, req, res, next) {
