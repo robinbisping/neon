@@ -48,8 +48,8 @@ UserSchema.pre('save', function (next) {
 	});
 });
 
-UserSchema.methods.verifyPassword = function (newPassword, next) {
-	// Compare new password with old one
+UserSchema.methods.comparePassword = function (newPassword, next) {
+	// Compare new password with stored password
 	bcrypt.compare(newPassword, this.password, function (err, isMatch) {
 		if (err) {
 			return next(err);
