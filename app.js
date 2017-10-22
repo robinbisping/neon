@@ -27,8 +27,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Use passport for authentication
 const passport = require('passport');
-const authController = require('./controllers/auth');
 app.use(passport.initialize());
+require('./config/passport');
 
 // Routes
 const userRoutes = require('./routes/user');
