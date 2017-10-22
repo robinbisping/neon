@@ -19,10 +19,10 @@ exports.read = function (req, res, next) {
 };
 
 exports.create = function (req, res, next) {
-	let user = new User({
+	var user = new User({
 		email: req.body.email,
 		password: req.body.password,
-		registered: Date.now()
+		created_at: Date.now()
 	});
 	user.save(function (err, user) {
 		if (err) {

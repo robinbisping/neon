@@ -23,7 +23,7 @@ const UserSchema = Schema({
 		required: true,
 		select: false
 	},
-	registered: {
+	created_at: {
 		type: Date,
 		required: true
 	},
