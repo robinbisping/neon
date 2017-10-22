@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Load configuration
-const config = require('./config/config');
+const config = require('./config/app');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -17,12 +17,12 @@ app.set('x-powered-by', false);
 
 // Connect to database
 const mongoose = require('mongoose');
-mongoose.connect(config.db.mongo.url + config.db.mongo.name, {
-	user: config.db.mongo.user,
-	pass: config.db.mongo.password,
+mongoose.connect(config.database.mongo.url + config.database.mongo.name, {
+	user: config.database.mongo.user,
+	pass: config.database.mongo.password,
 	useMongoClient: true
 });
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Use passport for authentication
