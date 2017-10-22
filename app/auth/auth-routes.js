@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+
+const authMiddleware = require('./auth-middleware');
+const authController = require('./auth-controller');
 
 // Authentication routes
-const authController = require('../controllers/auth');
 router.route('/login')
-	.get(passport.authenticate('basic', { session: false }), authController.login);
+	.get(authMiddleware.basicAuth, authController.login);
 router.route('/register')
 	.post(authController.register);
 

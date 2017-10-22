@@ -1,12 +1,11 @@
+const boom = require('boom');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
-const boom = require('boom');
-
-const config = require('../config/app');
-const User = require('../models/user');
+const config = require('../config');
+const User = require('../user/user-model');
 
 passport.use(
 	new BasicStrategy(function (email, password, next) {
@@ -37,7 +36,7 @@ passport.use(
 passport.use(
 	new JwtStrategy({
 		jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-		secretOrKey: config.auth.jwt.secret
+		secretOrKey: config.auth.secret
 	}, function (payload, next) {
 		User.findById(payload.id, function (err, user) {
 			if (err) {

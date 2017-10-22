@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 
-const config = require('../config/app');
+const config = require('../config');
 
 exports.login = function (req, res, next) {
 	const token = jwt.sign({
 		id: req.user._id
-	}, config.auth.jwt.secret);
+	}, config.auth.secret);
 	console.log(token);
 	res.json({
 		token: token
@@ -13,13 +13,7 @@ exports.login = function (req, res, next) {
 };
 
 exports.register = function (req, res, next) {
-	const token = jwt.sing({
-		id: req.user._id
-	}, config.auth.jwt.secret, {
-		expiresIn: 10080
-	});
 	res.json({
-		token: 'JWT ' + token,
-		user: req.user
+		success: true
 	});
 };

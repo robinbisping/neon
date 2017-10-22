@@ -1,6 +1,6 @@
 const boom = require('boom');
 
-const User = require('../models/user');
+const User = require('./user-model');
 
 exports.read = function (req, res, next) {
 	var id = req.params.id;
