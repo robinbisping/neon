@@ -2,7 +2,13 @@ const boom = require('boom');
 
 const User = require('./user-model');
 
-exports.read = function (req, res, next) {
+module.exports.read = read;
+module.exports.create = create;
+module.exports.update = update;
+module.exports.remove = remove;
+module.exports.list = list;
+
+function read (req, res, next) {
 	var id = req.params.id;
 	if (!id.match(/^[0-9a-fA-F]{24}$/)) {
 		return next(boom.notFound('User ID invalid.'));
@@ -16,9 +22,9 @@ exports.read = function (req, res, next) {
 		}
 		res.json(user);
 	});
-};
+}
 
-exports.create = function (req, res, next) {
+function create (req, res, next) {
 	var user = new User({
 		email: req.body.email,
 		password: req.body.password,
@@ -32,9 +38,9 @@ exports.create = function (req, res, next) {
 			data: user
 		});
 	});
-};
+}
 
-exports.update = function (req, res, next) {
+function update (req, res, next) {
 	var id = req.params.id;
 	if (!id.match(/^[0-9a-fA-F]{24}$/)) {
 		return next(boom.notFound('User ID invalid.'));
@@ -57,9 +63,9 @@ exports.update = function (req, res, next) {
 			});
 		});
 	});
-};
+}
 
-exports.delete = function (req, res, next) {
+function remove (req, res, next) {
 	var id = req.params.id;
 	User.findByIdAndRemove(id, function (err) {
 		if (err) {
@@ -67,9 +73,9 @@ exports.delete = function (req, res, next) {
 		}
 		res.status(204);
 	});
-};
+}
 
-exports.list = function (req, res, next) {
+function list (req, res, next) {
 	User.find(function (err, users) {
 		if (err) {
 			return next(err);

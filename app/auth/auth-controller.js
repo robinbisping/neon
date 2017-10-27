@@ -3,16 +3,19 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 const User = require('../user/user-model');
 
-exports.login = function (req, res, next) {
+module.exports.login = login;
+module.exports.register = register;
+
+function login (req, res, next) {
 	const token = jwt.sign({
 		id: req.user._id
 	}, config.auth.secret);
 	res.json({
 		token: token
 	});
-};
+}
 
-exports.register = function (req, res, next) {
+function register (req, res, next) {
 	var user = new User({
 		email: req.body.email,
 		password: req.body.password,
@@ -29,4 +32,4 @@ exports.register = function (req, res, next) {
 			token: token
 		});
 	});
-};
+}
