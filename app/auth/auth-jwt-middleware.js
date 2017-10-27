@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 const User = require('../user/user-model');
 
-const JWT_AUTH_HEADER_REGEX = /^ *(?:[Bb][Ee][Aa][Rr][Ee][Rr]) [A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=] *$/;
+const JWT_AUTH_HEADER_REGEX = /^(?:[Bb][Ee][Aa][Rr][Ee][Rr]) ([A-Za-z0-9]+\.[A-Za-z0-9]+\.[A-Za-z0-9]+)$/;
 
 function auth (req, res, next) {
 	var header = req.headers.authorization;

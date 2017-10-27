@@ -2,8 +2,8 @@ const boom = require('boom');
 
 const User = require('../user/user-model');
 
-const BASIC_AUTH_HEADER_REGEX = /^ *(?:[Bb][Aa][Ss][Ii][Cc]) +([A-Za-z0-9._~+/-]+=*) *$/;
-const USER_PASSWORD_REGEX = /^([^:]*):(.*)$/;
+const BASIC_AUTH_HEADER_REGEX = /^(?:[Bb][Aa][Ss][Ii][Cc]) ([A-Za-z0-9._~]+=*)$/;
+const USER_PASSWORD_REGEX = /^([^:]+):(.+)$/;
 
 function Credentials (email, password) {
 	this.email = email;
@@ -22,7 +22,7 @@ function auth (req, res, next) {
 	if (!data) {
 		return next(boom.unauthorized('Wrong authentication format.'));
 	}
-	var credentials = new Credentials(data[0], data[1]);
+	var credentials = new Credentials(data[1], data[2]);
 	// Check whether user exists or not
 	User.findOne({ email: credentials.email }).select('+password').exec(function (err, user) {
 		if (err) {

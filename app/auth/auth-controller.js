@@ -5,7 +5,7 @@ const User = require('../user/user-model');
 
 function login (req, res, next) {
 	const token = jwt.sign({
-		id: req.user._id
+		id: res.locals.user._id
 	}, config.auth.secret);
 	res.json({
 		token: token
