@@ -5,8 +5,6 @@ const User = require('../user/user-model');
 const BASIC_AUTH_HEADER_REGEX = /^ *(?:[Bb][Aa][Ss][Ii][Cc]) +([A-Za-z0-9._~+/-]+=*) *$/;
 const USER_PASSWORD_REGEX = /^([^:]*):(.*)$/;
 
-module.exports = auth;
-
 function Credentials (email, password) {
 	this.email = email;
 	this.password = password;
@@ -57,3 +55,5 @@ function parse (str, regex) {
 function decodeBase64 (str) {
 	return Buffer.from(str, 'base64').toString();
 }
+
+module.exports = auth;

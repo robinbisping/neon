@@ -2,12 +2,6 @@ const boom = require('boom');
 
 const User = require('./user-model');
 
-module.exports.read = read;
-module.exports.create = create;
-module.exports.update = update;
-module.exports.remove = remove;
-module.exports.list = list;
-
 function read (req, res, next) {
 	var id = req.params.id;
 	if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -82,4 +76,12 @@ function list (req, res, next) {
 		}
 		res.json(users);
 	});
+}
+
+module.exports = {
+	read: read,
+	create: create,
+	update: update,
+	remove: remove,
+	list: list
 };

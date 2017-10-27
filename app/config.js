@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
 	server: {
 		port: process.env.PORT || 3000
 	},
@@ -12,3 +12,5 @@ module.exports = {
 		secret: 'super secret'
 	}
 };
+
+module.exports = config;

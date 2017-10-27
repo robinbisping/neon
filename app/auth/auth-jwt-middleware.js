@@ -6,8 +6,6 @@ const User = require('../user/user-model');
 
 const JWT_AUTH_HEADER_REGEX = /^ *(?:[Bb][Ee][Aa][Rr][Ee][Rr]) [A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=] *$/;
 
-module.exports = auth;
-
 function auth (req, res, next) {
 	var header = req.headers.authorization;
 	// Validate authentication header
@@ -36,3 +34,5 @@ function auth (req, res, next) {
 function parse (str, regex) {
 	return regex.exec(str);
 }
+
+module.exports = auth;
