@@ -19,11 +19,11 @@ function read (req, res, next) {
 }
 
 function create (req, res, next) {
-	var user = new Group({
+	var group = new Group({
 		name: req.body.name,
 		description: req.body.description
 	});
-	user.save(function (err, group) {
+	group.save(function (err, group) {
 		if (err) {
 			return next(err);
 		}
