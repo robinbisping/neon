@@ -3,7 +3,6 @@ const router = express.Router();
 
 const groupController = require('./group-controller');
 
-// User routes
 router.route('/')
 	.post(groupController.create);
 router.route('/all')

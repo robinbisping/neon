@@ -3,7 +3,6 @@ const router = express.Router();
 
 const userController = require('./user-controller');
 
-// User routes
 router.route('/')
 	.post(userController.create);
 router.route('/all')
