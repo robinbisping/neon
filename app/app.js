@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
 app.use('/user', authJwtMiddleware, require('./user/user-routes'));
+app.use('/friend', authJwtMiddleware, require('./friend/friend-routes'));
 app.use('/group', authJwtMiddleware, require('./group/group-routes'));
 app.use('/auth', require('./auth/auth-routes'));
 
