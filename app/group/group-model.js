@@ -12,11 +12,10 @@ const GroupSchema = Schema({
 		type: String,
 		maxlength: 1000
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User',
-		required: true
-	}
+	members: [{
+		type: Schema.Types.ObjectId,
+		ref: 'Friend'
+	}]
 });
 
 module.exports = mongoose.model('Group', GroupSchema);
