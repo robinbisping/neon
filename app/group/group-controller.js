@@ -7,7 +7,7 @@ function read (req, res, next) {
 	if (!id.match(/^[0-9a-fA-F]{24}$/)) {
 		return next(boom.notFound('Group ID invalid.'));
 	}
-	Group.findById(id, function (err, group) {
+	Group.findById(id).populate('members').exec(function (err, group) {
 		if (err) {
 			return next(err);
 		}
@@ -69,7 +69,7 @@ function remove (req, res, next) {
 }
 
 function list (req, res, next) {
-	Group.find(function (err, groups) {
+	Group.find().populate('members').exec(function (err, groups) {
 		if (err) {
 			return next(err);
 		}
