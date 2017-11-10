@@ -4,12 +4,12 @@ const config = {
 	},
 	db: {
 		url: 'mongodb://localhost/',
-		name: 'neon',
-		user: 'neon',
-		password: 'password'
+		name: '',
+		user: '',
+		password: ''
 	},
 	auth: {
-		secret: 'super secret'
+		secret: ''
 	}
 };
 
